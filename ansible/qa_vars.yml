@@ -1,0 +1,3 @@
+---
+var1: 'aaa'
+var2: "{{ vault_var2 }}"

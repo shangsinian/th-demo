@@ -137,4 +137,10 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+             slackSend channel: 'test',
+                       message: "[${env.BUILD_URL}]"
+        }
+    }
 }
