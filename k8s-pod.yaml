@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: java-demo
+spec:
+  containers:
+  - name: java-demo
+    image: ghuang/java-demo-dev
