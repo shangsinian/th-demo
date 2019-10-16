@@ -1,0 +1,25 @@
+name: Build and Deploy docker image
+on: push
+  pull_request:
+    branches:
+    - master
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+
+    - name: build artifacts
+      run: ./bin/build
+
+    - name: build docker image
+      run: docker build -t docker.io/ghuang/demo-java:latest .
+
+    - name: Push the image to GPR
+      run: |
+        docker login docker.io -u ghuang -p ${{ secrets.DOCKERHUB_TOKEN }}
+        docker push docker.io/ghuang/demo-java:${{ github.sha }}
