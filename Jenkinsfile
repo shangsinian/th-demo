@@ -12,6 +12,10 @@ pipeline {
         ansiColor('xterm')
     }
 
+    triggers {
+        bitbucketPush()
+    }
+
     environment {
         DEPLOY_BRANCH  = "master"
         EMAIL_RECEP    = "huanggan1992@gmail.com"
