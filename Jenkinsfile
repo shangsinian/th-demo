@@ -3,15 +3,6 @@
 pipeline {
     agent any
 
-    options {
-        buildDiscarder(logRotator(daysToKeepStr: '30', artifactDaysToKeepStr: "20"))
-        disableConcurrentBuilds()
-        skipStagesAfterUnstable()
-        timestamps()
-        preserveStashes(buildCount: 20)
-        ansiColor('xterm')
-    }
-
     environment {
         DEPLOY_BRANCH  = "master"
         EMAIL_RECEP    = "huanggan1992@gmail.com"
