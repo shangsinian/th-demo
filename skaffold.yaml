@@ -3,10 +3,15 @@ kind: Config
 metadata:
   name: demo-java
 build:
-  context: src
   artifacts:
-  - image: ghuang/java-demo-dev
+    - image: ghuang/demo-java
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+        - src: "css/**/*.css"
+          dest: "app/"
 deploy:
   kubectl:
     manifests:
-    - dev-k8s-pod.yaml
+    - kube/dev-java.yaml
